@@ -25,4 +25,3 @@ function getDB() {
 
 //getDB();
 ?>
-
