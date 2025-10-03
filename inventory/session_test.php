@@ -10,5 +10,8 @@ Date: 2025-10-03
 Email: jfs62@njit.edu
 ===============================================================
 */
-    phpinfo();
-    
+   session_start();
+   echo "<pre>";
+   print_r($_SESSION);
+   echo "</pre>";
+?>

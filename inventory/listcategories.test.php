@@ -10,5 +10,12 @@ Date: 2025-10-03
 Email: jfs62@njit.edu
 ===============================================================
 */
-    phpinfo();
-    
+require_once("category.php");
+$categories = Category::getCategories();
+foreach($categories as $category) {
+   $categoryID = $category->categoryID;
+   $name = $categoryID . " - " . $category->categoryCode . ", " . $category->categoryName;
+   echo "$name<br>";
+}
+?>
+

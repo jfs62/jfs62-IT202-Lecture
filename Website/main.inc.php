@@ -1,4 +1,15 @@
 <?php
+/*
+===============================================================
+Name: James Shields
+UCID: jfs62
+Course: IT-202 Internet Applications (Section XX)
+Assignment: Phase 1 – Login/Logout
+Store: Guitar Shop
+Date: 2025-10-03
+Email: jfs62@njit.edu
+===============================================================
+*/
 if (!isset($_SESSION['login'])) {
 ?>
   <h2>Please log in</h2><br>
@@ -25,4 +36,5 @@ if (!isset($_SESSION['login'])) {
    <a href="index.php?content=logout"><strong>Logout</strong></a>
 <?php
 }
+echo "<H1>Guitar Shop</H1>";
 ?>
