@@ -29,6 +29,7 @@ session_start();
    </section>
 </body>
 </html>
+<?php
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 $content = $_REQUEST['content'] ?? 'main';
 $view = preg_replace('/[^a-zA-Z0-9_]/', '', $content) . '.inc.php';
