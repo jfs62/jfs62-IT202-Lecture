@@ -21,9 +21,11 @@ $db = getDB();
 
 $hashedPassword = hash('sha256', $password);
 
+
 $sql = "SELECT firstName, lastName, pronouns
-        FROM GuitarManagers
-        WHERE emailAddress = ? AND password = ?";
+FROM GuitarManagers
+WHERE emailAddress = 'taylor@guitarshop.com'
+  AND password = SHA2('myL0ngP@ssword', 256)";
 $stmt = $db->prepare($sql);
 $stmt->bind_param("ss", $emailAddress, $hashedPassword);
 $stmt->execute();
