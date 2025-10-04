@@ -15,9 +15,9 @@ Email: jfs62@njit.edu
 function getDB(): mysqli {
   // UPDATE THESE THREE LINES WITH YOUR REAL NJIT MYSQL CREDS
   $host     = 'sql1.njit.edu';
-  $dbname   = 'YOUR_UCID';        // e.g., jfs62
-  $username = 'YOUR_UCID';        // e.g., jfs62
-  $password = 'YOUR_DB_PASSWORD'; // your DB password
+  $dbname   = 'jfs62';        
+  $username = 'jfs62';        
+  $password = 'Avatar0302!'; 
   $port     = 3306;
 
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
