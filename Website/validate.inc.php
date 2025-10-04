@@ -17,11 +17,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 $emailAddress = trim($_POST['emailAddress'] ?? '');
 $password     = $_POST['password'] ?? '';
 
+$db = getDB();
+if (!$db) {
+  
+  echo "<h2>Sorry, database connection error.</h2>";
+  echo '<a href="index.php">Back</a>';
+  exit;
+}
+
 $sql = "SELECT firstName, lastName, pronouns
         FROM GuitarManagers
         WHERE emailAddress = ? AND password = SHA2(?, 256)";
-
-$db   = getDB();
 $stmt = $db->prepare($sql);
 $stmt->bind_param("ss", $emailAddress, $password);
 $stmt->execute();
@@ -36,7 +42,8 @@ if ($ok) {
   $_SESSION['firstName']    = $firstName;
   $_SESSION['lastName']     = $lastName;
   $_SESSION['pronouns']     = $pronouns;
-  header('Location: index.php');
+
+  include 'main.inc.php';
   exit;
 }
 ?>
