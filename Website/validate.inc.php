@@ -18,18 +18,14 @@ $emailAddress = trim($_POST['emailAddress'] ?? '');
 $password     = $_POST['password'] ?? '';
 
 $db = getDB();
-if (!$db) {
-  
-  echo "<h2>Sorry, database connection error.</h2>";
-  echo '<a href="index.php">Back</a>';
-  exit;
-}
+
 $hashedPassword = hash('sha256', $password);
+
 $sql = "SELECT firstName, lastName, pronouns
         FROM GuitarManagers
         WHERE emailAddress = ? AND password = ?";
 $stmt = $db->prepare($sql);
-$stmt->bind_param("ss", $emailAddress, $password);
+$stmt->bind_param("ss", $emailAddress, $hashedPassword);
 $stmt->execute();
 $stmt->bind_result($firstName, $lastName, $pronouns);
 $ok = $stmt->fetch();
@@ -43,7 +39,10 @@ if ($ok) {
   $_SESSION['lastName']     = $lastName;
   $_SESSION['pronouns']     = $pronouns;
 
-  include 'main.inc.php';
+  echo "<h2>Login Successful!</h2>";
+  echo "<p>Welcome, " . htmlspecialchars($firstName . ' ' . $lastName) . " (" . htmlspecialchars($pronouns) . ")</p>";
+  echo "<p>Email: " . htmlspecialchars($emailAddress) . "</p>";
+  echo '<a href="index.php">Go to main page</a>';
   exit;
 }
 ?>
