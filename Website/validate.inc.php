@@ -24,10 +24,10 @@ if (!$db) {
   echo '<a href="index.php">Back</a>';
   exit;
 }
-
+$hashedPassword = hash('sha256', $password);
 $sql = "SELECT firstName, lastName, pronouns
         FROM GuitarManagers
-        WHERE emailAddress = ? AND password = SHA2(?, 256)";
+        WHERE emailAddress = ? AND password = ?";
 $stmt = $db->prepare($sql);
 $stmt->bind_param("ss", $emailAddress, $password);
 $stmt->execute();
