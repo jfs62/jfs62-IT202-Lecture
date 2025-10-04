@@ -21,6 +21,6 @@ CREATE TABLE IF NOT EXISTS `GuitarManagers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `GuitarManagers` (emailAddress, password, pronouns, firstName, lastName) VALUES
-('taylor@guitarshop.com', SHA2('myL0ngP@ssword', 256), 'She/Her',  'Taylor', 'Swift'),
+('taylor@guitarshop.com', SHA2('myLongP@ssword', 256), 'She/Her',  'Taylor', 'Swift'),
 ('brad@guitarshop.com',   SHA2('MySecurePass!1', 256), 'He/Him',    'Brad',   'Pitt'),
 ('alex@guitarshop.com',   SHA2('AnotherPass!2', 256), 'They/Them', 'Alex',   'Rivera');
